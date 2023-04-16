@@ -20,7 +20,7 @@ A bugtracker web application built with React, Tailwind, and Material UI. The ap
 
 1. Clone the repository
 ```
-git clone https://github.com/Stress0219/bugtracking-react-Frontend
+git clone https://github.com/Stress0219/bugtracking-react-Frontend.git
 ```
 2. Install NPM packages:
 ```
