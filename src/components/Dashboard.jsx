@@ -69,7 +69,7 @@ export const Dashboard = () => {
 
   const [showConfirmation, setShowConfirmation] = useState(false);
 
-  const handleDeleteClick = (id) => {
+  const handleDeleteClick = () => {
     setShowConfirmation(true);
   };
 
@@ -87,7 +87,7 @@ export const Dashboard = () => {
       <div>
         <input
           className="border border-solid outline-none p-2 mb-4 mt-3 ml-3"
-          placeholder="Search"
+          placeholder="Search..."
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -119,7 +119,7 @@ export const Dashboard = () => {
                   Project ID
                 </TableCell>
                 <TableCell align="center" sx={{ fontSize: 18, fontWeight: 10 }}>
-                  User
+                  Asigned User
                 </TableCell>
                 <TableCell align="center" sx={{ fontSize: 18, fontWeight: 10 }}>
                   Actions
@@ -142,7 +142,7 @@ export const Dashboard = () => {
                   <TableCell align="center">
                     <Link
                       to={`/edit/${bug.id}`}
-                      className="bg-yellow-300 hover:bg-yellow-400 text-black font-bold py-2 px-4 rounded mx-1"
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-1"
                     >
                       Edit
                     </Link>

@@ -11,6 +11,8 @@ import MuiAlert from "@mui/material/Alert";
 
 export const CreateBug = () => {
   const URI = "http://localhost:8000/bugs/";
+  const UsersURI = "http://localhost:8000/users/";
+  const ProjectsURI = "http://localhost:8000/projects/";
 
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState("");
@@ -30,7 +32,7 @@ export const CreateBug = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const result = await axios.get("http://localhost:8000/users/");
+      const result = await axios.get(UsersURI);
       setUsers(result.data);
     };
     fetchUsers();
@@ -38,7 +40,7 @@ export const CreateBug = () => {
 
   useEffect(() => {
     const fetchProjects = async () => {
-      const result = await axios.get("http://localhost:8000/projects/");
+      const result = await axios.get(ProjectsURI);
       setProjects(result.data);
     };
     fetchProjects();
@@ -53,13 +55,13 @@ export const CreateBug = () => {
       });
       setOpen(true);
       return;
-    }
-    await axios.post(URI, {
-      user: user,
-      projectId: projectId,
-      description: description,
-    })
-    .then(response => {
+    };
+    try {
+      await axios.post(URI, {
+        user: user,
+        projectId: projectId,
+        description: description,
+      });
       setAlert({
         message: "Bug created successfully",
         severity: "success",
@@ -69,14 +71,13 @@ export const CreateBug = () => {
       setProjectId("");
       setDescription("");
       navigate("/");
-    })
-    .catch(error => {
+    } catch (error) {
       setAlert({
         message: error.response.data,
         severity: "error",
       });
       setOpen(true);
-    });
+    }
   };
 
   return (
