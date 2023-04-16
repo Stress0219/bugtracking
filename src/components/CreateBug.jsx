@@ -8,6 +8,8 @@ import FormControl from "@mui/material/FormControl";
 import Grid from "@mui/material/Grid";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
+import SaveIcon from '@mui/icons-material/Save';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 export const CreateBug = () => {
   const URI = "http://localhost:8000/bugs/";
@@ -139,15 +141,15 @@ export const CreateBug = () => {
           />
           <Link
             to={"/"}
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 m-2 rounded"
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-[10px] px-4 m-2 rounded"
           >
-            Cancel
+           <CancelIcon/> Cancel
           </Link>
           <button
             type="submit"
             className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
           >
-            Save
+           <SaveIcon/> Save
           </button>
           <Snackbar
           open={open}

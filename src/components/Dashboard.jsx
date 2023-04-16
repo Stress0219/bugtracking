@@ -10,6 +10,10 @@ import TableRow from "@mui/material/TableRow";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import Slide from "@mui/material/Slide";
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import SearchIcon from '@mui/icons-material/Search';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
 export const Dashboard = () => {
   const [bugs, setBugs] = useState([]);
@@ -84,24 +88,24 @@ export const Dashboard = () => {
 
   return (
     <>
-      <div>
+      <div className="border border-solid py-3 px-2 mt-3 ml-4 w-1/4 flex justify-between">
         <input
-          className="border border-solid outline-none p-2 mb-4 mt-3 ml-3"
+          className="border border-none outline-none w-3/4"
           placeholder="Search..."
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
+        <SearchIcon/>
       </div>
       <div className="flex justify-center">
         <Link
           to="/create"
           className="bg-green-400 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mt-2 justify-end flex"
         >
-          Insert Bug
+         <AddBoxIcon/> Insert Bug
         </Link>
       </div>
-      {filteredBugs.length > 0 ? (
         <TableContainer>
           <Table>
             <TableHead>
@@ -142,15 +146,15 @@ export const Dashboard = () => {
                   <TableCell align="center">
                     <Link
                       to={`/edit/${bug.id}`}
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-1"
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded mx-1"
                     >
-                      Edit
+                     <EditIcon/>Edit
                     </Link>
                     <button
                       className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                       onClick={() => handleDeleteClick(bug.id)}
                     >
-                      Delete
+                      <DeleteIcon />Delete
                     </button>
                     {showConfirmation && (
                       <div className="fixed inset-0 bg-gray-900 bg-opacity-70 flex items-center justify-center">
@@ -173,9 +177,6 @@ export const Dashboard = () => {
             </TableBody>
           </Table>
         </TableContainer>
-      ) : (
-        "no hay bugs"
-      )}
       <Snackbar
         open={open}
         autoHideDuration={3000}

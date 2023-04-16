@@ -7,10 +7,12 @@ import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
+import SaveIcon from '@mui/icons-material/Save';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const URI = 'http://localhost:8000/bugs/'
 const UsersURI = "http://localhost:8000/users/";
-  const ProjectsURI = "http://localhost:8000/projects/";
+const ProjectsURI = "http://localhost:8000/projects/";
 
 export const EditBug = () => {
     const [users, setUsers] = useState([]);
@@ -121,15 +123,15 @@ export const EditBug = () => {
             />
             <Link
               to={"/"}
-              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 m-2 rounded"
+              className="bg-red-500 hover:bg-red-700 text-white font-bold py-[10px] px-4 m-2 rounded"
             >
-              Cancel
+             <CancelIcon/> Cancel
             </Link>
             <button
               type="submit"
               className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
             >
-              Save
+             <SaveIcon/> Save
             </button>
           </form>
         </FormControl>
