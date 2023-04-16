@@ -16,6 +16,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 
 export const Dashboard = () => {
+
+  
+  const URI = "http://localhost:8000/bugs/";
+
+
   const [bugs, setBugs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredBugs, setFilteredBugs] = useState([]);
@@ -33,8 +38,6 @@ export const Dashboard = () => {
     setAlert({ message, severity });
     setOpen(true);
   };
-
-  const URI = "http://localhost:8000/bugs/";
 
   const getAllBugs = async () => {
     try {
@@ -151,6 +154,7 @@ export const Dashboard = () => {
                      <EditIcon/>Edit
                     </Link>
                     <button
+                      type="button"
                       className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                       onClick={() => handleDeleteClick(bug.id)}
                     >
@@ -161,10 +165,14 @@ export const Dashboard = () => {
                       <div className="bg-white p-8 rounded-lg">
                         <p className="text-lg font-medium mb-4">Are you sure want to delete this?</p>
                         <div className="flex justify-end">
-                          <button className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded mr-4" onClick={handleCancelDelete}>
+                          <button
+                          type="button" 
+                          className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded mr-4" onClick={handleCancelDelete}>
                             Cancel
                           </button>
-                          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleConfirmDelete(bug.id)}>
+                          <button
+                          type="button" 
+                          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleConfirmDelete(bug.id)}>
                             Confirm
                           </button>
                         </div>

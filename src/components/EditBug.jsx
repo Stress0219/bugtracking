@@ -40,20 +40,22 @@ export const EditBug = () => {
       }, []);
 
 
+
+
     const update = async (e) => {
         e.preventDefault()
-        await axios.put(URI+id, {
+        console.log(description,projectId,user)
+        await axios.put(URI + id, {
             description: description,
             projectId: projectId,
-            user:user
-        })
+            user: user
+          });
         navigate('/')
     }
 
     useEffect(() => {
         getBugById()
       }, [])
-
 
       const getBugById = async () => {
         const res = await axios.get(URI + id);
